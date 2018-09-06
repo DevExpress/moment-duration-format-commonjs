@@ -1,4 +1,5 @@
-# Moment Duration Format
+# Moment Duration Format CommonJS
+### CommonJS (Node.js) specific version
 
 **Format plugin for the Moment Duration object.**
 
@@ -16,36 +17,6 @@ Where it is available and functional, this plugin uses `Number#toLocaleString` t
 
 This plugin runs a feature test for `toLocaleString`, and will revert to a fallback function to render formatted numerical output if the feature test fails. To force this plugin to always use the fallback number format function, set `useToLocaleString` to `false`. The fallback number format function output can be localized using options detailed at the bottom of this page. You should, in general, specify the fallback number formatting options if the default `"en"` locale formatting would be unacceptable on some devices or in some environments.
 
-This plugin is tested using BrowserStack on a range of Android devices with OS versions from 2.2 to 7, and on a range of iOS devices with OS versions from 4.3 to 11. Also tested on Chrome, Firefox, IE 8-11, and Edge browsers.
-
-<a href="https://www.browserstack.com"><img src="https://p3.zdusercontent.com/attachment/1015988/Y0ZmOS3862TDx3JYOUTMIixSG?token=eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..xr8Y-gqQNBDnpIjxOFtAtA.JHb-wwL0uWT5ChR01yhMKp2lvM0iMdeYdoJYLCqs_DIiod7HmRoaGnRMoptV1GlrwF2Mo73Oj1d08E3rM7RHQPzwP3M10g4aN-vWcC2K743sf1qUKE_2TGVaz1HLkfUxF49U5hfE6AZ9V9ALE-Nu-GwfR0xcJVBz-FeV-H7YseaX_fXsO4pt1F3DjcwqhM1pcKfxoC5wYc2CHQnnqp1xS67KfTA6kuMiSDovZqSQpvg5VYZqAlDmxpKkZvOmzP_yEptqk4CDkl5IMItvxPjjaw.w7SKsx3c665glH7fgdcSIw" height="64"></a>
-
-Please raise an issue if you notice formatting issues or anomalies in any environment!
-
----
-
-## Roadmap
-
-### Version 2
-
-A few items remain to finish off Version 2:
-
-- Add type definitions to support TypeScript, publish NuGet package, and support whatever other packaging options are in use these days.
-
-- Testing of the plugin should be modernized, ideally to match the Moment.js testing setup.
-
-### Version 3
-
-Having implemented version 2 of the moment-duration-format plugin, there are some obvious improvements for a version 3.
-
-The ideas below are logged as issues and tagged with the [3.0.0 milestone](https://github.com/jsmreese/moment-duration-format/milestone/6). If you have ideas or comments about what you'd like to see, please log an issue on this project!
-
-- The fallback number formatting localization options should be included with the Moment Locale object extensions this plugin already adds for localizing duration unit labels. This would put all of the localization configuration in one place.
-
-- moment-duration-format and its fallback number formatting function do not follow the same API as `Number#toLocaleString` for significant digits and faction digits. The fallback function should be updated to use the `toLocaleString` API, and the plugin should expose the `toLocaleString` API options directly rather than hiding some of the options and masking them behind `precision` and `useSignificantDigits` options.
-
-- Exposing the fallback number formatting function as well as the `toLocaleString` feature test function would facilitate testing and allow them to be used outside of the context of formatting durations.
-
 ---
 
 ## Installation
@@ -54,29 +25,11 @@ The plugin depends on moment.js, which is not specified as a package dependency 
 
 **Node.js**
 
-`npm install moment-duration-format`
-
-**Bower**
-
-`bower install moment-duration-format`
-
-**Browser**
-
-`<script src="path/to/moment-duration-format.js"></script>`
+`npm install moment-duration-format-commonjs`
 
 ---
 
 ## Usage
-
-This plugin will always try to install itself on the `root.moment` instance, if it exists.
-
-This plugin will install its setup function to `root.momentDurationFormatSetup` so that it may be later called on any moment instance.
-
-### Browser
-
-When using this plugin in the browser, if you do not include moment.js on your page first, you need to manually call `window.momentDurationFormatSetup` on your moment instance once it is created.
-
-### Module
 
 To use this plugin as a module, use the `require` function.
 
@@ -87,7 +40,7 @@ var momentDurationFormatSetup = require("moment-duration-format");
 
 The plugin exports the init function so that duration format can be initialized on other moment instances.
 
-To use this plugin with any other moment.js package, for example `moment-timezone`, manually call the exported setup function to install the plugin into the desired package.
+Call the exported setup function to install the plugin into the desired package.
 
 ```javascript
 var moment = require("moment-timezone");
