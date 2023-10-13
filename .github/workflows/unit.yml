@@ -11,13 +11,13 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: CI
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js 16
-        uses: actions/setup-node@v1
+      - uses: DevExpress/testcafe-build-system/actions/prepare@main
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - run: npm i
+
+      - run: npm ci --legacy-peer-deps
       - run: npm run build --if-present
       - run: npm test
