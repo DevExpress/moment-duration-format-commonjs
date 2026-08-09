@@ -25,7 +25,7 @@
 	},
 	"homepage": "github.com/DevExpress/moment-duration-format-commonjs",
 	"devDependencies": {
-		"mocha": "^9.0.1",
+		"mocha": "^11.8.0",
 		"moment": "^2.29.1"
 	},
 	"scripts": {
